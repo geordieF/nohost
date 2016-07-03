@@ -434,7 +434,7 @@ function(Filer, Async, Log, Content) {
           '<td><a href="?' + parent + '">Parent Directory</a>       </td><td>&nbsp;</td>' +
           '<td align="right">  - </td><td>&nbsp;</td></tr>'; */
           
-          '<center> <ul> <nav> ' + path + ' </nav> <li> <a class="back" href="' + parent +'">Parent Directory</a> </li></ul></center>'
+           + '<center> <ul> <nav> ' + path + ' </nav> <li> <a class="back" href="' + parent +'">Parent Directory</a> </li></ul></center>'
     var footer = '<tr><th colspan="5"><hr></th></tr>' +
           '</table><address>nohost/0.0.1 (Web)</address>' +
           '</body></html>';
