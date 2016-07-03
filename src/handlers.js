@@ -432,13 +432,11 @@ function(Filer, Async, Log, Content) {
           '<tr><th colspan="5"><hr></th></tr>' +
           '<tr><td valign="top"><img src="icons/back.png" alt="[DIR]"></td>' +
           '<td><a href="?' + parent + '">Parent Directory</a>       </td><td>&nbsp;</td>' +
-          '<td align="right">  - </td><td>&nbsp;</td></tr>'; */
-          
-           + '<center> <ul> <nav> ' + path + ' </nav> <li> <a class="back" href="' + parent +'">Parent Directory</a> '
+          '<td align="right">  - </td><td>&nbsp;</td></tr>'; */           + '<center> <ul> <nav> ' + path + ' </nav> <li> <a class="back" href="' + parent +'">Parent Directory</a> ';
     var footer = '' +
           '</li></ul></center>' +
           '</body></html>';
-
+  }
     function formatDate(d) {
       // 20-Apr-2004 17:14
       return d.getDay() + '-' +
@@ -464,7 +462,7 @@ function(Filer, Async, Log, Content) {
       size = formatSize(size);
 
       return '<li>' +
-        '<a href="' + href + '" class="' + isdir + '">' + name + '</a>             </li>'
+        '<a href="' + href + '" class="' + isdir + '">' + name + '</a></li>';
     }
 
     function processEntries(entries) {
@@ -479,11 +477,12 @@ function(Filer, Async, Log, Content) {
         if(entry.type === 'DIRECTORY') {
           isdir = 'folder';
         } else { // file
-          isdir = ''
-          }
+          isdir = '';
         }
+        };
         rows += row(icon, alt, href, name, entry.modified, entry.size);
       });
+    
 
       _writeMarkup(header + rows + footer);
     }
