@@ -434,9 +434,9 @@ function(Filer, Async, Log, Content) {
           '<td><a href="?' + parent + '">Parent Directory</a>       </td><td>&nbsp;</td>' +
           '<td align="right">  - </td><td>&nbsp;</td></tr>'; */
           
-           + '<center> <ul> <nav> ' + path + ' </nav> <li> <a class="back" href="' + parent +'">Parent Directory</a> </li></ul></center>'
-    var footer = '<tr><th colspan="5"><hr></th></tr>' +
-          '</table><address>nohost/0.0.1 (Web)</address>' +
+           + '<center> <ul> <nav> ' + path + ' </nav> <li> <a class="back" href="' + parent +'">Parent Directory</a> '
+    var footer = '' +
+          '</li></ul></center>' +
           '</body></html>';
 
     function formatDate(d) {
@@ -457,16 +457,14 @@ function(Filer, Async, Log, Content) {
       return Math.round(s / Math.pow(1024, i), 2) + units[i];
     }
 
-    function row(icon, alt, href, name, modified, size) {
+    function row(isdir, alt, href, name, modified, size) {
       icon = icon || 'icons/unknown.png';
       alt = alt || '[   ]';
       modified = formatDate(new Date(modified));
       size = formatSize(size);
 
-      return '<tr><td valign="top"><img src="' + icon + '" alt="' + alt + '"></td><td>' +
-        '<a href="' + href + '">' + name + '</a>             </td>' +
-        '<td align="right">' + modified + '  </td>' +
-        '<td align="right">' + size + '</td><td>&nbsp;</td></tr>';
+      return '<li>' +
+        '<a href="' + href + '" class="' + isdir + '">' + name + '</a>             </li>' +
     }
 
     function processEntries(entries) {
@@ -479,18 +477,9 @@ function(Filer, Async, Log, Content) {
         var alt;
 
         if(entry.type === 'DIRECTORY') {
-          icon = 'icons/folder.png';
-          alt = '[DIR]';
+          isdir = 'folder';
         } else { // file
-          if(Content.isImage(ext)) {
-            icon = 'icons/image2.png';
-            alt = '[IMG]';
-          } else if(Content.isMedia(ext)) {
-            icon = 'icons/movie.png';
-            alt = '[MOV]';
-          } else {
-            icon = 'icons/text.png';
-            alt = '[TXT]';
+          isdir = ''
           }
         }
         rows += row(icon, alt, href, name, entry.modified, entry.size);
