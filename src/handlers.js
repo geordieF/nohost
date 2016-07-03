@@ -424,16 +424,17 @@ function(Filer, Async, Log, Content) {
     var parent = Path.dirname(path);
 
     var header = '<!DOCTYPE html>' +
-          '<html><head><title>Index of ' + path + '</title></head>' +
-          '<body><h1>Index of ' + path + '</h1>' +
+          '<html><head><style>@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css);ul li a:hover,ul nav{background:#dcdcdc}ul{width:400px;text-align:left;border:1px solid #888;box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);border-radius:5px;margin-top:50px;padding:0;list-style-type:none}ul nav{padding:10px 15px;border-radius:5px 5px 0 0}ul li a{padding:15px;border-top:solid 1px grey;display:block;color:#333;text-decoration:none}ul li a.back:before{content:"\f053"}ul li a.folder:before{content:"\f114"}ul li a:before{content:"\f016";width:25px;margin-left:-5px;margin-right:5px;display:inline-block;text-align:center;font-family:FontAwesome}</style><title>Index of ' + path + '</title></head>' +
+          '<body>' /* <h1>Index of ' + path + '</h1>' +
           '<table><tr><th><img src="icons/blank.png" alt="[ICO]"></th>' +
           '<th><a href="#">Name</a></th><th><a href="#">Last modified</a></th>' +
           '<th><a href="#">Size</a></th><th><a href="#">Description</a></th></tr>' +
           '<tr><th colspan="5"><hr></th></tr>' +
           '<tr><td valign="top"><img src="icons/back.png" alt="[DIR]"></td>' +
           '<td><a href="?' + parent + '">Parent Directory</a>       </td><td>&nbsp;</td>' +
-          '<td align="right">  - </td><td>&nbsp;</td></tr>';
-
+          '<td align="right">  - </td><td>&nbsp;</td></tr>'; */
+          
+          '<center> <ul> <nav> ' + path + ' </nav> <li> <a class="back" href="' + parent +'">Parent Directory</a> </li></ul></center>'
     var footer = '<tr><th colspan="5"><hr></th></tr>' +
           '</table><address>nohost/0.0.1 (Web)</address>' +
           '</body></html>';
