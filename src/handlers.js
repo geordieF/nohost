@@ -464,7 +464,7 @@ function(Filer, Async, Log, Content) {
       size = formatSize(size);
 
       return '<li>' +
-        '<a href="' + href + '" class="' + isdir + '">' + name + '</a>             </li>' +
+        '<a href="' + href + '" class="' + isdir + '">' + name + '</a>             </li>'
     }
 
     function processEntries(entries) {
